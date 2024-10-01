@@ -24,7 +24,7 @@ $user_id = $_SESSION['user_id'];
     <title>Home</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="icon" href="./images/logo.png" />
+    <link rel="icon" href="./images/logo.jpg" />
 
     <style>
         #myVideo {
@@ -113,6 +113,22 @@ $user_id = $_SESSION['user_id'];
                     <li class="nav-item">
                         <a class="nav-link" href="./game/progress.php">
                             <button type="button" class="btn btn-outline-info">Profile</button>
+                        </a>
+                    </li>
+                    <li>&nbsp; &nbsp; &nbsp; &nbsp;</li>
+                    <li>&nbsp; &nbsp; &nbsp; &nbsp;</li>
+                    <li>&nbsp; &nbsp; &nbsp; &nbsp;</li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./game/astroids.php">
+                            <button type="button" class="btn btn-outline-danger">Astroids</button>
+                        </a>
+                    </li>
+                    <li>&nbsp; &nbsp; &nbsp; &nbsp;</li>
+                    <li>&nbsp; &nbsp; &nbsp; &nbsp;</li>
+                    <li>&nbsp; &nbsp; &nbsp; &nbsp;</li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./game/astroids_3d.html">
+                            <button type="button" class="btn btn-outline-danger">Astroids 3D Model</button>
                         </a>
                     </li>
                 </ul>

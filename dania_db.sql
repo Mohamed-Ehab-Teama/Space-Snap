@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 30, 2024 at 02:43 AM
+-- Generation Time: Oct 01, 2024 at 08:12 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -43,7 +43,8 @@ INSERT INTO `avatars` (`id`, `avatar_name`, `avatar_image`, `cost`) VALUES
 (2, 'Astronaut', 'astronaut.png', 100),
 (3, 'Alien', 'alien.png', 150),
 (4, 'Robot', 'robot.png', 200),
-(5, 'Cosmic Warrior', 'warrior.png', 300);
+(5, 'Cosmic Warrior', 'warrior.png', 300),
+(6, 'default avatar', 'default_avatar.png', 0);
 
 -- --------------------------------------------------------
 
@@ -79,8 +80,7 @@ CREATE TABLE `levels` (
 --
 
 INSERT INTO `levels` (`id`, `level_number`, `level_name`, `description`, `total_sessions`) VALUES
-(1, 1, 'test', 'dkidhidhi', 12),
-(3, 2, 'Sun and planets', 'aaaaa', 12);
+(6, 1, 'Test 01', 'this is test level', 4);
 
 -- --------------------------------------------------------
 
@@ -104,7 +104,8 @@ INSERT INTO `planets` (`id`, `planet_name`, `planet_image`, `cost`) VALUES
 (2, 'Mars', 'mars.png', 150),
 (3, 'Jupiter', 'jupiter.png', 200),
 (4, 'Saturn', 'saturn.png', 250),
-(5, 'Neptune', 'neptune.png', 300);
+(5, 'Neptune', 'neptune.png', 300),
+(6, 'no planet', 'no.png', 0);
 
 -- --------------------------------------------------------
 
@@ -126,7 +127,27 @@ CREATE TABLE `quizzes` (
 --
 
 INSERT INTO `quizzes` (`id`, `level_id`, `quiz_name`, `total_questions`, `correct_answer_count`, `created_at`) VALUES
-(10, 1, 'test1', 10, 0, '2024-09-29 11:50:53');
+(11, 6, 'quiz 1', 4, 0, '2024-09-30 18:29:53');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `quiz_attempts`
+--
+
+CREATE TABLE `quiz_attempts` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `quiz_id` int(11) NOT NULL,
+  `attempt_date` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `quiz_attempts`
+--
+
+INSERT INTO `quiz_attempts` (`id`, `user_id`, `quiz_id`, `attempt_date`) VALUES
+(7, 4, 11, '2024-09-30 21:03:08');
 
 -- --------------------------------------------------------
 
@@ -150,16 +171,10 @@ CREATE TABLE `quiz_questions` (
 --
 
 INSERT INTO `quiz_questions` (`id`, `quiz_id`, `question_text`, `correct_answer`, `option_a`, `option_b`, `option_c`, `option_d`) VALUES
-(1, 10, 'how are you?', 'fine', 'bad', 'good', 'fine', 'nob'),
-(2, 10, 'how do you do', 'fine', 'bad', 'fine', 'asasa', 'nob'),
-(3, 10, 'qq', 'qq', 'qq', 'ww', 'ee', 'rr'),
-(4, 10, 'ww', 'ww', 'qq', 'ww', 'ee', 'rr'),
-(5, 10, 'rr', 'rr', 'ww', 'qq', 'rr', 'cc'),
-(6, 10, 'aa', 'aa', 'qq', 'ww', '\\\\', 'aa'),
-(7, 10, 'ttt', 'tt', 'yy', 'tt', 'yy', 'ee'),
-(8, 10, 'ww', 'ww', 'ww', 'tt', 'asasa', 'rr'),
-(9, 10, 'qqqq', 'qq', 'ww', 'qq', 'ww', 'ww'),
-(10, 10, 'dd', 'dd', 'dd', 'ww', 'ee', 'qq');
+(11, 11, 'q1', '11', '11', '22', '33', '44'),
+(12, 11, 'www', 'w', 'w', 'q', 'r', 'f'),
+(13, 11, 'qq', 'q', 'w', 'e', 'r', 'q'),
+(14, 11, 'ffff', 'f', 'r', 'e', 'f', 'g');
 
 -- --------------------------------------------------------
 
@@ -183,22 +198,10 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `level_id`, `session_number`, `content`, `is_completed`, `user_id`, `completed_at`, `coins_awarded`) VALUES
-(1, 1, 1, 'fdkgvkfnkdbnkdbnkldfbnkdb', 1, NULL, NULL, 0),
-(2, 1, 2, 'aaaaaaaaaaaaaaaaaaaaa', 1, NULL, NULL, 0),
-(3, 3, 3, 'bffffffff', 1, NULL, NULL, 0),
-(4, 1, 3, '333333', 1, 1, '2024-09-29 11:25:09', 0),
-(5, 1, 4, '444444', 1, NULL, NULL, 0),
-(6, 1, 5, '55555555555', 1, NULL, NULL, 0),
-(7, 1, 6, '66666666666', 1, 1, '2024-09-29 11:25:48', 0),
-(8, 1, 7, '777777777777777', 1, 1, '2024-09-29 11:27:10', 0),
-(9, 1, 8, '8888888888888888', 1, 1, '2024-09-29 11:27:14', 0),
-(10, 1, 9, '999999999999999999', 1, 1, '2024-09-29 11:27:21', 0),
-(11, 1, 10, '1000000000000', 1, 1, '2024-09-29 11:27:23', 0),
-(12, 1, 11, '11111111111111111111', 1, 1, '2024-09-29 11:27:25', 0),
-(13, 1, 12, '12222222222222222', 1, 1, '2024-09-29 11:27:26', 0),
-(14, 3, 2, '22222222', 0, NULL, NULL, 0),
-(15, 3, 3, '3333333333', 0, NULL, NULL, 0),
-(16, 3, 4, '444444444444', 0, NULL, NULL, 0);
+(34, 6, 1, 'session 01', 1, 4, '2024-09-30 18:28:50', 0),
+(35, 6, 2, 'session 02', 1, 4, '2024-09-30 18:29:03', 0),
+(36, 6, 3, 'session 03\r\n', 1, 4, '2024-09-30 18:29:07', 0),
+(37, 6, 4, 'session 04', 1, 4, '2024-09-30 18:29:16', 0);
 
 -- --------------------------------------------------------
 
@@ -213,7 +216,7 @@ CREATE TABLE `users` (
   `password` varchar(255) NOT NULL,
   `coins` int(11) DEFAULT 0,
   `avatar` varchar(100) DEFAULT 'default_avatar.png',
-  `planet` varchar(100) DEFAULT 'Earth',
+  `planet` varchar(100) DEFAULT 'no.png',
   `levels_completed` int(11) DEFAULT 0,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `is_admin` tinyint(1) DEFAULT NULL,
@@ -229,8 +232,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `coins`, `avatar`, `planet`, `levels_completed`, `created_at`, `is_admin`, `current_streak`, `longest_streak`, `last_activity`, `last_session_date`, `sessions_completed_today`) VALUES
-(1, 'User 01', 'user1@test.com', '25f9e794323b453885f5181f1b624d0b', 440, 'default_avatar.png', 'Earth', 0, '2024-09-28 10:33:52', 1, 1, 1, '2024-09-29', '2024-09-29', 11),
-(2, 'User 02', 'user2@test.com', '25f9e794323b453885f5181f1b624d0b', 350, 'warrior.png', 'saturn.png', 0, '2024-09-29 18:23:05', NULL, 0, 0, NULL, NULL, 0);
+(3, 'Mohamed Ehab', 'mohamed@test.com', '25f9e794323b453885f5181f1b624d0b', 0, 'default_avatar.png', 'no.png', 0, '2024-09-30 18:02:01', 1, 0, 0, NULL, NULL, 0),
+(4, 'Test User', 'test@test.com', '25f9e794323b453885f5181f1b624d0b', 2500, 'astronaut.png', 'neptune.png', 6, '2024-09-30 18:22:57', 0, 0, 0, NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -249,11 +252,11 @@ CREATE TABLE `user_avatars` (
 --
 
 INSERT INTO `user_avatars` (`id`, `user_id`, `avatar_id`) VALUES
-(1, 2, NULL),
-(2, 2, NULL),
-(3, 2, NULL),
-(4, 2, NULL),
-(5, 2, NULL);
+(1, 4, NULL),
+(2, 4, NULL),
+(3, 4, NULL),
+(4, 4, NULL),
+(5, 4, NULL);
 
 -- --------------------------------------------------------
 
@@ -272,12 +275,24 @@ CREATE TABLE `user_planets` (
 --
 
 INSERT INTO `user_planets` (`id`, `user_id`, `planet_id`) VALUES
-(1, 2, 1),
-(2, 2, 2),
-(3, 2, 3),
-(4, 2, 4),
-(5, 2, 5),
-(6, 2, 5);
+(1, 4, NULL),
+(2, 4, NULL),
+(3, 4, NULL),
+(4, 4, NULL),
+(5, 4, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_quizzes`
+--
+
+CREATE TABLE `user_quizzes` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `quiz_id` int(11) DEFAULT NULL,
+  `completed_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
@@ -314,6 +329,13 @@ ALTER TABLE `planets`
 ALTER TABLE `quizzes`
   ADD PRIMARY KEY (`id`),
   ADD KEY `level_id` (`level_id`);
+
+--
+-- Indexes for table `quiz_attempts`
+--
+ALTER TABLE `quiz_attempts`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `user_id` (`user_id`,`quiz_id`);
 
 --
 -- Indexes for table `quiz_questions`
@@ -353,6 +375,14 @@ ALTER TABLE `user_planets`
   ADD KEY `planet_id` (`planet_id`);
 
 --
+-- Indexes for table `user_quizzes`
+--
+ALTER TABLE `user_quizzes`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `user_id` (`user_id`,`quiz_id`),
+  ADD KEY `quiz_id` (`quiz_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -360,7 +390,7 @@ ALTER TABLE `user_planets`
 -- AUTO_INCREMENT for table `avatars`
 --
 ALTER TABLE `avatars`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `coins`
@@ -372,49 +402,61 @@ ALTER TABLE `coins`
 -- AUTO_INCREMENT for table `levels`
 --
 ALTER TABLE `levels`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `planets`
 --
 ALTER TABLE `planets`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `quizzes`
 --
 ALTER TABLE `quizzes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `quiz_attempts`
+--
+ALTER TABLE `quiz_attempts`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `quiz_questions`
 --
 ALTER TABLE `quiz_questions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `sessions`
 --
 ALTER TABLE `sessions`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user_avatars`
 --
 ALTER TABLE `user_avatars`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user_planets`
 --
 ALTER TABLE `user_planets`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `user_quizzes`
+--
+ALTER TABLE `user_quizzes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -457,6 +499,13 @@ ALTER TABLE `user_avatars`
 ALTER TABLE `user_planets`
   ADD CONSTRAINT `user_planets_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   ADD CONSTRAINT `user_planets_ibfk_2` FOREIGN KEY (`planet_id`) REFERENCES `planets` (`id`);
+
+--
+-- Constraints for table `user_quizzes`
+--
+ALTER TABLE `user_quizzes`
+  ADD CONSTRAINT `user_quizzes_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  ADD CONSTRAINT `user_quizzes_ibfk_2` FOREIGN KEY (`quiz_id`) REFERENCES `quizzes` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Space Exploration Game</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="../images/logo.jpg" />
     <style>
         /* .hero {
             background-image: url('your-image-url.jpg');
@@ -60,11 +61,11 @@
 <body>
 
     <video autoplay muted loop id="myVideo">
-        <source src="../vids/background-vid.mp4" type="video/mp4">
+        <source src="../vids/vid2.mp4" type="video/mp4">
     </video>
 
     <div class="hero text-center text-white">
-        <h1 class="text-warning">Welcome to Space Exploration Game!</h1>
+        <h1 class="text-warning">Let's Start Learning!</h1>
     </div>
 
     <div class="container">

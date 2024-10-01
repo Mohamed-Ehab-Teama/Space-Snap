@@ -11,9 +11,10 @@ if (!isset($_SESSION['user_id'])) {
 // Get the level_id and session_id from the URL
 $level_id = $_GET['level_id']; // Get the level_id from the URL
 $session_id = $_GET['session_id']; // Get the specific session_id from the URL
+$level_number = $_GET['level_number']; 
 
 // Fetch the specific session for the level
-$query = "SELECT * FROM sessions WHERE level_id = :level_id AND id = :session_id";
+$query = "SELECT * FROM sessions WHERE level_id = :level_id AND session_number = :session_id";
 $stmt = $connection->prepare($query);
 $stmt->bindParam(':level_id', $level_id);
 $stmt->bindParam(':session_id', $session_id);
@@ -28,7 +29,7 @@ if (!$session) {
 $user_id = $_SESSION['user_id'];
 
 // Initialize variables for session limit
-$max_sessions_per_day = 2; // Maximum sessions a user can complete in a day
+$max_sessions_per_day = 4; // Maximum sessions a user can complete in a day
 
 // Get today's date
 $today = date('Y-m-d');
@@ -90,6 +91,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Session for Level <?= htmlspecialchars($level_id); ?></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="icon" href="../images/logo.jpg" />
     <style>
         #myVideo {
             position: fixed;
@@ -131,11 +133,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
 
     <video autoplay muted loop id="myVideo">
-        <source src="../vids/background-vid.mp4" type="video/mp4">
+        <source src="../vids/vid2.mp4" type="video/mp4">
     </video>
 
     <div class="container">
-        <h1 class="text-center text-warning m-5">Session for Level <?= htmlspecialchars($level_id); ?></h1>
+        <h1 class="text-center text-warning m-5">Session for Level <?= htmlspecialchars($level_number); ?></h1>
         <div class="session border border-warning rounded-pill">
             <h3 class="text-center text-warning mt-5">Session <?= htmlspecialchars($session['session_number']); ?></h3>
             <p class="text-white mt-5 p-5"><?= htmlspecialchars($session['content']); ?></p>

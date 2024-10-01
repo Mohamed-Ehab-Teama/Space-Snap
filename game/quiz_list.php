@@ -21,8 +21,9 @@ $quizzes = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz List</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="icon" href="../images/logo.jpg" />
 </head>
-<body>
+<body style="background-color: rgba(200,200,200,0.2) ;">
 <div class="container">
     <h1>Quizzes</h1>
     <table class="table">
@@ -48,5 +49,8 @@ $quizzes = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </tbody>
     </table>
 </div>
+
+<a href="game.php" class="btn btn-secondary btn-block mt-3">Back to Home</a>
+
 </body>
 </html>

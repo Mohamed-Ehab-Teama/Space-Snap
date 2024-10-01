@@ -121,75 +121,93 @@ if (isset($_POST['planet_id'])) {
 }
 ?>
 
-<!DOCTYPE html>
+
+
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Progress</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>User Profile</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="icon" href="../images/logo.jpg" />
+
     <style>
-        .profile-section {
-            text-align: center;
-            margin: 20px 0;
+        .profile-img {
+            width: 100%;
+            height: 100%;
         }
 
-        .customization-options img {
-            width: 100px;
-            height: 100px;
-            margin-bottom: 10px;
+        img {
+            width: 60%;
+            height: 60%;
         }
 
-        .customization-options {
-            margin-top: 20px;
+        .bg-black {
+            background: #000;
         }
 
-        h4 {
-            display: inline-block;
+        .skill-block {
+            width: 30%;
+        }
+
+        @media (min-width: 991px) and (max-width:1200px) {
+            .skill-block {
+                padding: 32px !important;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .skill-block {
+                padding: 56px !important;
+            }
         }
 
         body {
-            background-image: url("../images/profile-bg.jpg");
-            background-size: cover;
+            background-image: url('../images/bg2.jpg');
         }
     </style>
+
+
 </head>
 
 <body>
-    <div class="container">
-        <h1 class="text-center m-5 border border-warning rounded-pill  p-2 text-warning">User Progress</h1>
 
-        <!-- Profile Section -->
-        <div class="profile-section border border-warning rounded" style="background: rgba(0, 0, 0, .6) ">
-            <img src="avatars/<?= htmlspecialchars($user['avatar']); ?>" alt="Avatar"
-                class="img-fluid rounded-circle m-3" width="200px">
-            <h3 class="m-3 text-info">User Name : <h1 style="display: in;">
-                    <span class="text-warning"> <?= htmlspecialchars($user['username']); ?>
-                </h1> </span>
-            </h3>
-            <p class="m-3 border border-bottom border-danger">
-            <h4 class="m-3 text-info">Planet:</h4> <img src="planets/<?= htmlspecialchars($user['planet']); ?>" alt="Planet"
-                class="img-fluid m-3" width="200px">
-            </p>
-            <p class="m-3 border border-bottom border-danger">
-            <h4 class="m-3 text-info">Levels Completed:</h4>
-            <h5 class="text-warning"><?= htmlspecialchars($user['levels_completed']); ?> </h5>
-            </p>
-            <p class="m-3 border border-bottom border-danger">
-            <h4 class="m-3 text-info">Sessions Completed Today:</h4>
-            <h5 class="text-warning"><?= htmlspecialchars($user['sessions_completed_today']); ?> </h5>
-            </p>
-            <p class="m-3 border border-bottom border-danger">
-            <h4 class="m-3 text-info">Coins:</h4>
-            <h5 class="text-warning"> <?= htmlspecialchars($user['coins']); ?> </h5>
-            </p>
+    <div class="container mt-5 mb-5">
+        <div class="row no-gutters">
+            <div class="col-md-4 col-lg-4"><img class="profile-img" src="avatars/<?= htmlspecialchars($user['avatar']); ?>" alt="Avater"></div>
+            <div class="col-md-8 col-lg-8">
+                <div class="d-flex flex-column">
+                    <div class="d-flex flex-row justify-content-between align-items-center p-5 bg-dark text-white mt-3">
+                        <h3 class="display-5"><?= htmlspecialchars($user['username']); ?></h3><i class="fa fa-facebook"></i><i class="fa fa-google"></i><i class="fa fa-youtube-play"></i><i class="fa fa-dribbble"></i><i class="fa fa-linkedin"></i>
+                    </div>
+                    <div class="d-flex flex-row text-white mt-4">
+                        <div class="bg-primary text-center skill-block">
+                            <h5>Planet</h5>
+                            <img src="planets/<?= htmlspecialchars($user['planet']); ?>" alt="Planet"
+                                class="img-fluid w-100">
+                        </div>
+                        <div class="p-3 bg-success text-center skill-block">
+                            <h4>Levels Completed:</h4>
+                            <h6> <?= htmlspecialchars($user['levels_completed']); ?> </h6>
+                        </div>
+                        <div class="p-3 bg-warning text-center skill-block">
+                            <h4>Coins:</h4>
+                            <h6> <?= htmlspecialchars($user['coins']); ?> </h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+    </div>
 
+
+    <div class="container mt-5 mb-5">
         <!-- Customization Section -->
         <div class="customization-options ">
-            <h4 class="text-info text-uppercase border-top border-left border-right border-info rounded pl-5 mb-0">Avatars</h4>
-            <div class="row border border-warning rounded p-4 m-4" style="background: rgba(0, 0, 0, .6) ">
+            <h4 class="text-info text-uppercase border-info rounded pl-5 mb-0">Avatars</h4>
+            <div class="row border border-info rounded p-4 m-4" style="background: rgba(0, 0, 0, .2) ">
                 <?php
                 // Fetch all avatars
                 $avatar_query = "SELECT * FROM avatars";
@@ -209,8 +227,8 @@ if (isset($_POST['planet_id'])) {
                 <?php endforeach; ?>
             </div>
 
-            <h4 class="text-info text-uppercase border-top border-left border-right border-info rounded pl-5 mb-0">Planets</h4>
-            <div class="row border border-warning rounded p-4 m-4 " style="background: rgba(0, 0, 0, .6) ">
+            <h4 class="text-info text-uppercase border-info rounded pl-5 mb-0">Planets</h4>
+            <div class="row border border-info rounded p-4 m-4 " style="background: rgba(0, 0, 0, .6) ">
                 <?php
                 // Fetch all planets
                 $planet_query = "SELECT * FROM planets";
@@ -235,6 +253,9 @@ if (isset($_POST['planet_id'])) {
     <center>
         <a href="../index.php" class="btn btn-outline-warning btn-block m-3">Back To Home Page</a>
     </center>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 
 </html>

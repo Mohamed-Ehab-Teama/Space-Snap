@@ -47,8 +47,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Quiz Question</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="icon" href="../images/logo.jpg" />
 </head>
-<body>
+<body style="background-color: rgba(200,200,200,0.2) ;">
 <div class="container">
     <h1>Add Quiz Question</h1>
     <form method="POST" action="">
@@ -87,5 +88,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <button type="submit" class="btn btn-primary">Add Question</button>
     </form>
 </div>
+
+<a href="game.php" class="btn btn-secondary btn-block mt-4 mb-2">Back to Home</a>
+
+
 </body>
 </html>

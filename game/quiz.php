@@ -77,6 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars($quiz['quiz_name']); ?></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="icon" href="../images/logo.jpg" />
 
     <style>
         #myVideo {
@@ -118,8 +119,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
 
-    <video autoplay muted loop id="myVideo">
-        <source src="../vids/background-vid.mp4" type="video/mp4">
+<video autoplay muted loop id="myVideo">
+        <source src="../vids/vid2.mp4" type="video/mp4">
     </video>
 
     <div class="container">

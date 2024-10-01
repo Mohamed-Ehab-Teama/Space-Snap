@@ -31,8 +31,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Level</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="../images/logo.jpg" />
 </head>
-<body>
+<body style="background-color: rgba(200,200,200,0.2) ;">
     <div class="container mt-5">
         <h1 class="text-center">Add New Level</h1>
         <form method="POST">

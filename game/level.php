@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Level Details</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" href="../images/logo.jpg" />
 
     <style>
         #myVideo {
@@ -49,8 +50,8 @@
 
 <body>
 
-    <video autoplay muted loop id="myVideo">
-        <source src="../vids/background-vid.mp4" type="video/mp4">
+<video autoplay muted loop id="myVideo">
+        <source src="../vids/vid2.mp4" type="video/mp4">
     </video>
 
 
@@ -78,7 +79,7 @@
 
             foreach ($sessions as $session) {
                 echo "
-                <a href='session.php?level_id={$level_id}&session_id={$session['id']}' class='list-group-item list-group-item-action bg-transparent text-white m-4 border border-warning rounded-pill pl-5'>
+                <a href='session.php?level_id={$level_id}&session_id={$session['session_number']}&level_number={$level['level_number']}' class='list-group-item list-group-item-action bg-transparent text-white m-4 border border-warning rounded-pill pl-5'>
                     Go To Session {$session['session_number']}
                 </a>
                 ";
