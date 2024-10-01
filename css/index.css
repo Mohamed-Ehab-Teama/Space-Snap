@@ -1,0 +1,46 @@
+.nav-style{
+    transition: 1.5s;
+}
+
+.nav-style:hover {
+    background-color: rgba(1, 2, 23, 0.651) !important;
+}
+
+.proj-name{
+    transition: 1.5s;
+}
+
+.proj-name:hover {
+    transform: scale(1.5);
+    text-shadow: 10px 10px 10px rgb(180, 35, 129);
+}
+
+
+/* Footer */
+.my-footer {
+    margin-top: 60px !important;
+}
+
+.my-footer .container button i img {
+    width: 35px;
+}
+
+footer div a {
+    transition: 1.5s;
+}
+
+footer div a:hover {
+    transform: scale(1.3);
+    box-shadow: 2px 2px 2px blueviolet;
+}
+
+
+/* Sections */
+.my-con {
+    transition: 2s;
+    box-shadow: 10px 10px 10px rgb(140, 222, 222);
+}
+
+.my-con:hover{
+    transform: scale(1.1);
+}
