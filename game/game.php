@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Space Exploration Game</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" href="../images/logo.jpg" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         /* .hero {
             background-image: url('your-image-url.jpg');
@@ -65,7 +65,7 @@
     </video>
 
     <div class="hero text-center text-white">
-        <h1 class="text-warning">Let's Start Learning!</h1>
+        <h1 class="text-warning">Welcome to Space Exploration Game!</h1>
     </div>
 
     <div class="container">
@@ -81,7 +81,7 @@
             foreach ($levels as $level) {
                 echo "
                 <div class='col-md-4 mb-4'>
-                    <div class='card bg-transparent border-warning rounded-pill p-5 m-2'>
+                    <div class='card bg-transparent border-warning rounded p-3 m-2'>
                         <div class='card-body'>
                             <h5 class='card-title text-warning'>{$level['level_name']}</h5>
                             <p class='card-text text-light'>{$level['description']}</p>

@@ -121,8 +121,8 @@ if (isset($_POST['submit'])) {
 
 
     // Password length
-    if (strlen($pass) < 3 || strlen($pass) > 16) {
-        $_SESSION['error'] = 'Password must be between 3 to 16 characters';
+    if (strlen($pass) < 6 || strlen($pass) > 16) {
+        $_SESSION['error'] = 'Password must be between 6 to 16 characters';
         header('location:register.php');
         exit;
     }

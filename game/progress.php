@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = $_SESSION['user_id'];
 
 // Fetch user information
-$query = "SELECT username, avatar, planet, levels_completed, sessions_completed_today, coins FROM users WHERE id = :user_id";
+$query = "SELECT username, avatar, planet, levels_completed, sessions_completed_today, coins, current_streak FROM users WHERE id = :user_id";
 $stmt = $connection->prepare($query);
 $stmt->bindParam(':user_id', $user_id);
 $stmt->execute();
@@ -24,6 +24,7 @@ function userOwns($table, $user_id, $item_id, $connection)
     $stmt->execute();
     return $stmt->fetch(PDO::FETCH_ASSOC);
 }
+
 
 // Function to handle purchase
 function handlePurchase($table, $item_id, $user_id, $cost, $column, $connection, $item_name)
@@ -192,9 +193,13 @@ if (isset($_POST['planet_id'])) {
                             <h4>Levels Completed:</h4>
                             <h6> <?= htmlspecialchars($user['levels_completed']); ?> </h6>
                         </div>
-                        <div class="p-3 bg-warning text-center skill-block">
+                        <div class="p-3 bg-info text-center skill-block">
                             <h4>Coins:</h4>
                             <h6> <?= htmlspecialchars($user['coins']); ?> </h6>
+                        </div>
+                        <div class="p-3 bg-primary text-center skill-block">
+                            <h4>Streak:</h4>
+                            <h6> <?= htmlspecialchars($user['current_streak']); ?> </h6>
                         </div>
                     </div>
                 </div>

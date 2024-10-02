@@ -143,8 +143,8 @@ $user_id = $_SESSION['user_id'];
 
 
     <div class="container py-5">
-        <h1 class="proj-name text-center text-warning mb-5">(:- <b><u><i>SPACE SNAP</i></u></b> -:)</h1>
-        <h3 class="text-center text-warning mb-5">The Wonders of the Universe</h3>
+        <h1 class="proj-name text-center text-warning mb-5"> <b><i>SPACE SNAP</i></b> </h1>
+        <h3 class="text-center text-warning mb-5">Explore, Collect, Create</h3>
 
         <!-- Universe Section -->
         <section class="my-con mb-5 border border-warning-subtle rounded p-3">

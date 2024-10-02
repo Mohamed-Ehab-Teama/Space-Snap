@@ -7,8 +7,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Level Details</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" href="../images/logo.jpg" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
         #myVideo {
@@ -50,7 +50,7 @@
 
 <body>
 
-<video autoplay muted loop id="myVideo">
+    <<video autoplay muted loop id="myVideo">
         <source src="../vids/vid2.mp4" type="video/mp4">
     </video>
 
@@ -115,7 +115,7 @@
             <p>No quiz available for this level.</p>
         <?php endif; ?>
 
-        <a href="game.php" class="btn btn-info btn-block m-5">Back to Home</a>
+        <a href="./game.php" class="btn btn-info btn-block m-5">Back to Home</a>
     </div>
 
     <script src="../js/back-vid.js"></script>

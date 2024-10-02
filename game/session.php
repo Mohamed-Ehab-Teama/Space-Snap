@@ -29,7 +29,7 @@ if (!$session) {
 $user_id = $_SESSION['user_id'];
 
 // Initialize variables for session limit
-$max_sessions_per_day = 4; // Maximum sessions a user can complete in a day
+$max_sessions_per_day = 15; // Maximum sessions a user can complete in a day
 
 // Get today's date
 $today = date('Y-m-d');
@@ -47,7 +47,7 @@ $completed_today = $count_result['session_count'];
 // Complete a session
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Check if the session is already completed by the user
-    $check_query = "SELECT is_completed, coins_awarded FROM sessions WHERE id = :session_id AND user_id = :user_id";
+    $check_query = "SELECT is_completed, coins_awarded FROM sessions WHERE session_number = :session_id AND user_id = :user_id";
     $check_stmt = $connection->prepare($check_query);
     $check_stmt->bindParam(':session_id', $session_id);
     $check_stmt->bindParam(':user_id', $user_id);
@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "You have reached the maximum of $max_sessions_per_day sessions for today.";
     } else {
         // Update session as completed
-        $update_query = "UPDATE sessions SET is_completed = 1, user_id = :user_id, completed_at = NOW() WHERE id = :session_id";
+        $update_query = "UPDATE sessions SET is_completed = 1, user_id = :user_id, completed_at = NOW() WHERE session_number = :session_id";
         $update_stmt = $connection->prepare($update_query);
         $update_stmt->execute([
             'session_id' => $session_id,
@@ -90,8 +90,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Session for Level <?= htmlspecialchars($level_id); ?></title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="icon" href="../images/logo.jpg" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         #myVideo {
             position: fixed;
